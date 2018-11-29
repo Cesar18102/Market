@@ -37,7 +37,7 @@ namespace Market
             C.Parameters.Add("@provider_id", Provider_IDS[Provider.SelectedIndex]);
             C.Parameters.Add("@date", Constants.FormatDateTime(Date.Value));
             C.Parameters.Add("@amount", Convert.ToInt32(Amount.Value));
-            C.Parameters.Add("@price", Convert.ToInt32(Price.Value));
+            C.Parameters.Add("@price", Convert.ToDouble(Price.Value));
 
             C.ExecuteNonQuery();
 

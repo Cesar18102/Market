@@ -21,6 +21,8 @@ namespace Market
         private List<int> Product_IDS = new List<int>();
         private List<int> Product_Counts = new List<int>();
 
+        private List<Predicate<DataGridViewRow>> Filters = new List<Predicate<DataGridViewRow>>();
+
         public DealForm()
         {
             InitializeComponent();
@@ -62,6 +64,9 @@ namespace Market
 
         private void Update()
         {
+            Product.Items.Clear();
+            ProductVAL.Items.Clear();
+
             DT = new DataTable();
             MDA.Fill(DT);
             DealList.DataSource = DT;
@@ -78,21 +83,43 @@ namespace Market
                 Product_IDS.Add(Convert.ToInt32(Product_DT.Rows[i]["id"]));
                 Product_Counts.Add(Convert.ToInt32(Product_DT.Rows[i]["amount"]));
                 Product.Items.Add(Product_DT.Rows[i]["name"].ToString());
+                ProductVAL.Items.Add(Product_DT.Rows[i]["name"].ToString());
             }
 
             if (Product_IDS.Count == 0)
+            {
                 AddDeal.Enabled = false;
+                ProductCB.Checked = false;
+                ProductCB.Enabled = false;
+            }
             else
             {
                 AddDeal.Enabled = true;
                 Product.SelectedIndex = 0;
                 Amount.Maximum = Product_Counts[Product.SelectedIndex];
+                ProductCB.Enabled = true;
             }
         }
 
         private void Product_SelectedIndexChanged(object sender, EventArgs e)
         {
             Amount.Maximum = Product_Counts[Product.SelectedIndex];
+        }
+
+        private void Filter_Changed(object sender, EventArgs e)
+        {
+            Filters.Clear();
+
+            if (ProductCB.Checked)
+                Filters.Add(DGW => Convert.ToInt32(DGW.Cells["product_id"].Value) == Product_IDS[ProductVAL.SelectedIndex]);
+
+            if (PeriodCB.Checked && StartVAL.Value <= EndVAL.Value)
+                MDA.SelectCommand = new MySqlCommand("SELECT * FROM deals WHERE date BETWEEN '" + Constants.FormatDateTime(StartVAL.Value) + "' AND '" + 
+                                                                                                  Constants.FormatDateTime(EndVAL.Value) + "'", MSC);
+            else
+                MDA.SelectCommand = new MySqlCommand("SELECT * FROM deals", MSC);
+
+            Update();
         }
     }
 }

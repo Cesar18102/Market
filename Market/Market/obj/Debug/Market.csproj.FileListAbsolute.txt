@@ -16,3 +16,5 @@ C:\Users\olehk\Documents\Visual Studio 2012\Projects\Market\Market\obj\Debug\Mar
 C:\Users\olehk\Documents\Visual Studio 2012\Projects\Market\Market\obj\Debug\Market.DealForm.resources
 C:\Users\olehk\Documents\Visual Studio 2012\Projects\Market\Market\obj\Debug\Market.Storage.resources
 C:\Users\olehk\Documents\Visual Studio 2012\Projects\Market\Market\obj\Debug\Market.Summary.resources
+C:\Users\olehk\Documents\Visual Studio 2012\Projects\Market\Market\bin\Debug\Microsoft.Office.Tools.Word.v4.0.Utilities.dll
+C:\Users\olehk\Documents\Visual Studio 2012\Projects\Market\Market\bin\Debug\Microsoft.Office.Tools.Word.v4.0.Utilities.xml

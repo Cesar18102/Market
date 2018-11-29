@@ -37,6 +37,8 @@
             this.Deal = new System.Windows.Forms.Button();
             this.Storage = new System.Windows.Forms.Button();
             this.Summary = new System.Windows.Forms.Button();
+            this.DealReport = new System.Windows.Forms.Button();
+            this.SypplyReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Worker
@@ -129,11 +131,33 @@
             this.Summary.UseVisualStyleBackColor = true;
             this.Summary.Click += new System.EventHandler(this.Summary_Click);
             // 
+            // DealReport
+            // 
+            this.DealReport.Location = new System.Drawing.Point(12, 532);
+            this.DealReport.Name = "DealReport";
+            this.DealReport.Size = new System.Drawing.Size(367, 46);
+            this.DealReport.TabIndex = 10;
+            this.DealReport.Text = "Отчет по покупкам";
+            this.DealReport.UseVisualStyleBackColor = true;
+            this.DealReport.Click += new System.EventHandler(this.DealReport_Click);
+            // 
+            // SypplyReport
+            // 
+            this.SypplyReport.Location = new System.Drawing.Point(12, 480);
+            this.SypplyReport.Name = "SypplyReport";
+            this.SypplyReport.Size = new System.Drawing.Size(367, 46);
+            this.SypplyReport.TabIndex = 9;
+            this.SypplyReport.Text = "Отчет по поставкам";
+            this.SypplyReport.UseVisualStyleBackColor = true;
+            this.SypplyReport.Click += new System.EventHandler(this.SypplyReport_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 482);
+            this.ClientSize = new System.Drawing.Size(395, 588);
+            this.Controls.Add(this.DealReport);
+            this.Controls.Add(this.SypplyReport);
             this.Controls.Add(this.Summary);
             this.Controls.Add(this.Storage);
             this.Controls.Add(this.Deal);
@@ -163,6 +187,8 @@
         private System.Windows.Forms.Button Deal;
         private System.Windows.Forms.Button Storage;
         private System.Windows.Forms.Button Summary;
+        private System.Windows.Forms.Button DealReport;
+        private System.Windows.Forms.Button SypplyReport;
     }
 }
 
