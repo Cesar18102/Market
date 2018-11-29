@@ -104,7 +104,7 @@
             // SectionName
             // 
             this.SectionName.Location = new System.Drawing.Point(153, 3);
-            this.SectionName.MaxLength = 30;
+            this.SectionName.MaxLength = 16;
             this.SectionName.Name = "SectionName";
             this.SectionName.Size = new System.Drawing.Size(205, 29);
             this.SectionName.TabIndex = 1;

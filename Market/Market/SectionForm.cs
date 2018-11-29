@@ -31,32 +31,32 @@ namespace Market
 
         private void AddSection_Click(object sender, EventArgs e)
         {
+            int Manager_id = Manager_IDS[Manager.SelectedIndex];
+
             int MSID = Constants.GetMaxID(ref MSC, "SELECT MAX(id) AS id FROM section") + 1;
             MySqlCommand C = new MySqlCommand("INSERT INTO section VALUES(@id, @name, @manager_id)", MSC);
 
             C.Parameters.Add("@id", MSID);
             C.Parameters.Add("@name", SectionName.Text);
-            C.Parameters.Add("@manager_id", Manager_IDS[Manager.SelectedIndex]);
+            C.Parameters.Add("@manager_id", Manager_id);
 
             C.ExecuteNonQuery();
-            Update();
 
 
             int MPID = Constants.GetMaxID(ref MSC, "SELECT MAX(id) AS id FROM posts") + 1;
             C = new MySqlCommand("INSERT INTO posts VALUES(@id, @name)", MSC);
 
             C.Parameters.Add("@id", MPID);
-            C.Parameters.Add("@name", "Заведующий отдела \"" + SectionName.Text + "\"");
+            C.Parameters.Add("@name", "Зав. отдела \"" + SectionName.Text + "\"");
 
             C.ExecuteNonQuery();
-            Update();
 
 
             C = new MySqlCommand("UPDATE worker SET post_id = @post_id, section_id = @section_id WHERE id=@id", MSC);
 
             C.Parameters.Add("@post_id", MPID);
             C.Parameters.Add("@section_id", MSID);
-            C.Parameters.Add("@id", Manager_IDS[Manager.SelectedIndex]);
+            C.Parameters.Add("@id", Manager_id);
 
             C.ExecuteNonQuery();
             Update();
