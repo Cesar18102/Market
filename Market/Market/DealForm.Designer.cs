@@ -69,9 +69,24 @@
             // Amount
             // 
             this.Amount.Location = new System.Drawing.Point(192, 41);
+            this.Amount.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.Amount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.Amount.Name = "Amount";
             this.Amount.Size = new System.Drawing.Size(499, 29);
             this.Amount.TabIndex = 2;
+            this.Amount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Product
             // 

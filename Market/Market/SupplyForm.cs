@@ -31,7 +31,7 @@ namespace Market
 
         private void AddSupply_Click(object sender, EventArgs e)
         {
-            MySqlCommand C = new MySqlCommand("INSERT INTO provider_product VALUES(@product_id, @provider_id, @amount, @date, @price)", MSC);
+            MySqlCommand C = new MySqlCommand("INSERT INTO provider_product VALUES(@provider_id, @product_id, @amount, @date, @price)", MSC);
 
             C.Parameters.Add("@product_id", Product_IDS[Product.SelectedIndex]);
             C.Parameters.Add("@provider_id", Provider_IDS[Provider.SelectedIndex]);

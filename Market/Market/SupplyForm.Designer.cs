@@ -69,10 +69,26 @@
             // 
             // Price
             // 
+            this.Price.DecimalPlaces = 2;
             this.Price.Location = new System.Drawing.Point(192, 114);
+            this.Price.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.Price.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(499, 29);
             this.Price.TabIndex = 4;
+            this.Price.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             // 
             // Date
             // 
@@ -85,9 +101,24 @@
             // Amount
             // 
             this.Amount.Location = new System.Drawing.Point(192, 79);
+            this.Amount.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.Amount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.Amount.Name = "Amount";
             this.Amount.Size = new System.Drawing.Size(499, 29);
             this.Amount.TabIndex = 3;
+            this.Amount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
