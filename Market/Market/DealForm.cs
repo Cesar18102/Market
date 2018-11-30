@@ -21,8 +21,6 @@ namespace Market
         private List<int> Product_IDS = new List<int>();
         private List<int> Product_Counts = new List<int>();
 
-        private List<Predicate<DataGridViewRow>> Filters = new List<Predicate<DataGridViewRow>>();
-
         public DealForm()
         {
             InitializeComponent();
@@ -108,16 +106,17 @@ namespace Market
 
         private void Filter_Changed(object sender, EventArgs e)
         {
-            Filters.Clear();
 
-            if (ProductCB.Checked)
-                Filters.Add(DGW => Convert.ToInt32(DGW.Cells["product_id"].Value) == Product_IDS[ProductVAL.SelectedIndex]);
+            string Condition = "";
+
+            if (ProductCB.Checked && ProductVAL.SelectedIndex != -1)
+                Condition += "product_id=" + Product_IDS[ProductVAL.SelectedIndex];
 
             if (PeriodCB.Checked && StartVAL.Value <= EndVAL.Value)
-                MDA.SelectCommand = new MySqlCommand("SELECT * FROM deals WHERE date BETWEEN '" + Constants.FormatDateTime(StartVAL.Value) + "' AND '" + 
-                                                                                                  Constants.FormatDateTime(EndVAL.Value) + "'", MSC);
-            else
-                MDA.SelectCommand = new MySqlCommand("SELECT * FROM deals", MSC);
+                Condition += " AND date BETWEEN '" + Constants.FormatDateTime(StartVAL.Value) + "' AND '" + 
+                                                     Constants.FormatDateTime(EndVAL.Value) + "'";
+
+            MDA.SelectCommand = new MySqlCommand("SELECT * FROM deals" + (Condition == ""? "" : " WHERE " + Condition), MSC);
 
             Update();
         }
